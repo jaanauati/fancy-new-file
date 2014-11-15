@@ -86,7 +86,7 @@ class FancyNewFileView extends View
             not caseSensitive and filename.toLowerCase().indexOf(fragment) is 0
 
           if matches
-            isDir = fs.statSync(path.join(@inputPath(), filename)).isDirectory()
+            try isDir = fs.statSync(path.join(@inputPath(), filename)).isDirectory()
             (if isDir then dirList else fileList).push name:filename, isDir:isDir
 
         if atom.config.get 'fancy-new-file.showFilesInAutoComplete'
